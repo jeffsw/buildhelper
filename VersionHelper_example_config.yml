@@ -1,0 +1,9 @@
+---
+# VersionHelper example config file
+# See https://github.com/jeffsw/buildhelper/
+symbol_prefix: ACME_
+touch:
+  - src/acme_version.c
+c_file: src/acme_version.h
+c_template: BuildHelper/c.template
+

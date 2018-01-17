@@ -1,0 +1,4 @@
+# BuildHelper python dependency list
+gitpython
+PyYAML
+
