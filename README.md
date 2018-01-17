@@ -16,6 +16,8 @@ cp buildhelper/* acme/BuildHelper
 
 # VersionHelper Usage
 
+## Configure for Your Project
+
 After you've copied BuildHelper into your repo, create a configuration
 file called `VersionHelper.yml` that looks like the example, below.
 
@@ -33,11 +35,15 @@ c_file: src/acme_version.h
 c_template: BuildHelper/c.template
 ```
 
+## Tag Your Build
+
 Use git tags to identify your project's version numbers.
 ```shell
 git tag -a release-1.0 -m "I am declaring this commit to be release 1.0"
 git push && git push --tags
 ```
+
+## Run VersionHelper
 
 Then, simply run the tool:
 
@@ -49,7 +55,7 @@ jsw@athena:~/acme$ BuildHelper/VersionHelper.py
 #VersionHelper had 2 effects
 ```
 
-Or add VersionHelper to your Makefile (or other build system config):
+Or add VersionHelper to your `Makefile` (or other build system config):
 ```Makefile
 # run VersionHelper before building acme_version.o
 src/acme_version.o: src/acme_version.c
@@ -60,13 +66,21 @@ src/acme_version.o: src/acme_version.c
 .PHONY: src/acme_version.o
 ```
 
-Finally, consider adding your output files (like `version.h`) to your
+## Tips
+
+Consider adding your output files (like `version.h`) to your
 project's `.gitignore` as you shouldn't want them in your repo; you
 want those files to arise at build time.
 
 ```console
 jsw@athena:~/acme$ echo "src/acme_version.h" >> .gitignore
 ```
+
+To list all your builds, just run `git tag --list`.
+
+To check out a previous build, `git checkout <tag name>`.  Don't be
+surprised if this puts your working directory into detached HEAD
+state.  That's normal!
 
 # TODO
 
