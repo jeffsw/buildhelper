@@ -30,7 +30,7 @@ class VersionHelper():
 
         self.verbose = self.args['verbose']
         self.build_host = socket.gethostname()
-        self.build_host = re.match('^([^.]+).', self.build_host).group(1)
+        self.build_host = re.match('^([^.]+)', self.build_host).group(1)
         self.symbol_prefix = self.args['symbol_prefix']
         self.symbol_prefix_lower = self.symbol_prefix.lower()
         self.symbol_prefix_upper = self.symbol_prefix.upper()
